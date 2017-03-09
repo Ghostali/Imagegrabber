@@ -1,0 +1,66 @@
+{% extends "blueprint.html" %}
+{% block title %}Home{% endblock %}
+{% block head %}
+  {{ super() }}
+<style>
+div.img {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 200px;
+    height: 150px;
+}
+
+div.img:hover {
+    border: 1px solid #777;
+}
+
+div.img img {
+    width: 100%;
+    height: 100%;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+<form method="post">
+    <div class="row">
+    <div class="input-group">
+      <input type="url" class="form-control input-lg" name="link" id="link" value="{{ request.form.link }}"
+               placeholder="Enter a URL">
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-default" style="color: #0088af"><i class="fa fa-arrow-circle-right fa-2x"
+                                                                            aria-hidden="true"></i></button>
+      </span>
+    </div>
+        </div>
+
+        <h4>How far to look for images: </h4>
+    <label class="checkbox-inline"><input checked="checked" type="radio" name="options" id="option1" value="2">Default</label>
+    <label class="checkbox-inline"><input type="radio" name="options" id="option2" value="4">2x further</label>
+    <label class="checkbox-inline"><input type="radio" name="options" id="option3" value="6">3x further</label>
+
+</form>
+
+<center>
+    <h1>Images grabbed</h1>
+</center>
+
+<hr>
+    {% for image in links %}
+        <div class="img">
+            <img src="{{ image }}" alt="{{ image }}" width="200" height="150">
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+
+
