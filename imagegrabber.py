@@ -8,7 +8,7 @@ links = []
 def website(site,option):
     del links[:]
     # open firefox and go to the looking glass website
-    driver = webdriver.Firefox()
+    driver = webdriver.PhantomJS()
     driver.maximize_window()
     driver.get(site)
     for _ in range(int(option)):

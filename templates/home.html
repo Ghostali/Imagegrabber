@@ -33,6 +33,21 @@
 {% endfor %}
 </center>
 
+<hr>
+        <div class="container">
+            <h4>Recent websites searched </h4>
+            <table class="table">
+    <tbody>
+    {% for link in urls %}
+      <tr>
+        <td><a href="{{ link }}"> {{ link }} </a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+            </table>
+        </div>
+
+
 {% endblock %}
 
 

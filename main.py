@@ -2,27 +2,37 @@
 import logging
 import imagegrabber
 from flask import Flask, render_template, redirect, url_for, request, Response, flash, session
-
+import pymysql
 
 app = Flask(__name__)
 
 app.secret_key = 'randomized'
 
+conn = pymysql.connect(host='35.187.42.64', user='root', passwd='Killer123', db='websites')
+c = conn.cursor()
+
 
 # Loads the index page and looks at inputs once submitted
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    urls = []
+    s = c.execute("SELECT * from websites")
+    for i in c.fetchall():
+        urls.append(i[0])
+    print(urls)
     if request.method == 'POST':
         url = request.form['link']
         if len(url) > 1:
             option = request.form['options']
+            c.execute("""INSERT INTO websites (link) VALUES (%s)""", (url))
+            conn.commit()
             print("this is the URL", url)
             session['url'] = url
             session['option'] = option
             return redirect(url_for('images'))
         else:
             return redirect(url_for('index'))
-    return render_template('home.html')
+    return render_template('home.html', s=s, urls=urls)
 
 
 # returns the images scrawled on given website
