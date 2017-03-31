@@ -34,20 +34,16 @@
 </center>
 
 <hr>
-        <div class="container">
-            <h4>Recent websites searched </h4>
-            <table class="table">
-    <tbody>
+
+<div class="container">
+<div class="list-group">
     {% for link in urls %}
-      <tr>
-        <td><a href="{{ link }}"> {{ link }} </a></td>
-      </tr>
+  <a href="{{ link }}" class="list-group-item active">
+    {{ link[0:100] }}
+  </a>
     {% endfor %}
-    </tbody>
-            </table>
-        </div>
-
-
+</div>
+</div>
 {% endblock %}
 
 

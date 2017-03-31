@@ -3,7 +3,7 @@ import logging
 import imagegrabber
 from flask import Flask, render_template, redirect, url_for, request, Response, flash, session
 import pymysql
-
+from datetime import date
 app = Flask(__name__)
 
 app.secret_key = 'randomized'
@@ -16,15 +16,22 @@ c = conn.cursor()
 @app.route('/', methods=['GET', 'POST'])
 def index():
     urls = []
-    s = c.execute("SELECT * from websites")
+    today = date.today()
+    todaysdate = today.strftime('%d-%m-%Y')
+    s = c.execute("SELECT * from websites where date = (%s)",(todaysdate))
     for i in c.fetchall():
         urls.append(i[0])
     print(urls)
+    # removes dups
+    newurl = []
+    for i in urls:
+        if i not in newurl:
+            newurl.append(i)
     if request.method == 'POST':
         url = request.form['link']
         if len(url) > 1:
             option = request.form['options']
-            c.execute("""INSERT INTO websites (link) VALUES (%s)""", (url))
+            c.execute("""INSERT INTO websites (link,date) VALUES (%s,%s)""", (url, todaysdate))
             conn.commit()
             print("this is the URL", url)
             session['url'] = url
@@ -32,7 +39,7 @@ def index():
             return redirect(url_for('images'))
         else:
             return redirect(url_for('index'))
-    return render_template('home.html', s=s, urls=urls)
+    return render_template('home.html', urls=newurl)
 
 
 # returns the images scrawled on given website
