@@ -20,10 +20,11 @@
     </div>
         </div>
 
+
         <h4>How far to look for images: </h4>
-    <label class="checkbox-inline"><input checked="checked" type="radio" name="options" id="option1" value="2">Default</label>
-    <label class="checkbox-inline"><input type="radio" name="options" id="option2" value="4">2x further</label>
-    <label class="checkbox-inline"><input type="radio" name="options" id="option3" value="6">3x further</label>
+    <label class="checkbox-inline"><input checked="checked" type="radio" name="options" id="option1" value="2"> Default</label>
+    <label class="checkbox-inline"><input type="radio" name="options" id="option2" value="4"> Far</label>
+    <label class="checkbox-inline"><input type="radio" name="options" id="option3" value="6"> Whole page</label>
 
 </form>
 
@@ -35,14 +36,19 @@
 
 <hr>
 
-<div class="container">
+<h4>Recent websites searched</h4>
+
+<hr>
+
+
 <div class="list-group">
     {% for link in urls %}
   <a href="{{ link }}" class="list-group-item active">
-    {{ link[0:100] }}
+    {{ link[0:35] }}
+      <i class="fa fa-external-link" aria-hidden="true"></i>
   </a>
+    <br>
     {% endfor %}
-</div>
 </div>
 {% endblock %}
 
