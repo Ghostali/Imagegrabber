@@ -1,2 +1,2 @@
 # Imagegrabber
-Grabs images from websites.
+Grabs images from websites using selenium.
