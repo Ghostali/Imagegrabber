@@ -8,7 +8,8 @@ app = Flask(__name__)
 
 app.secret_key = 'randomized'
 
-conn = pymysql.connect(host='35.187.42.64', user='root', passwd='Killer123', db='websites')
+# replace [] with your own details
+conn = pymysql.connect(host='[hostname]', user='[username]', passwd='[password]', db='[databasename]')
 c = conn.cursor()
 
 
