@@ -17,8 +17,9 @@ def website(site, option):
         time.sleep(2)
     images = driver.find_elements_by_xpath('//img[@src]')
     for image in images:
-        print(image.get_attribute('src'))
-        links.append(image.get_attribute('src'))
+        if 'http' not in image.get_attribute('src'):
+            links.append(site + '/' + image.get_attribute('src'))
+        else:
+            links.append(image.get_attribute('src'))
     driver.quit()
-    print(links)
     return links
