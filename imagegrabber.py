@@ -7,7 +7,6 @@ links = []
 # scrawls website for images in a <img> tag
 def website(site, option):
     del links[:]
-    # open firefox and go to the looking glass website
     driver = webdriver.PhantomJS()
     driver.maximize_window()
     driver.get(site)
