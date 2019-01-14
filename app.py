@@ -21,7 +21,7 @@ def index():
             return redirect(url_for('images'))
         else:
             return redirect(url_for('index'))
-    return render_template('home.html')
+    return render_template('index.html')
 
 
 # returns the images scrawled on given website
@@ -45,7 +45,7 @@ def images():
         flash('No image was found')
         return redirect(url_for('index'))
     print("this is the links", links)
-    return render_template('images.html', links=links)
+    return render_template('imagess.html', links=links)
 
 
 @app.errorhandler(500)
