@@ -35,7 +35,6 @@
         }
     </style>
 
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -66,11 +65,17 @@
     </nav>
 
     <!-- Masthead -->
-    <header class="text-center">
-      <br>
-      <div class="overlay">
-        <h2>Results</h2>
-      <hr>
+    <header class="masthead text-white text-center" style="
+    padding-top: 50px;
+    padding-bottom: 10px;
+    ">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <h2 class="mb-5">Results</h2>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -80,7 +85,7 @@
         <div class="row">
           {% for image in links %}
         <div class="img">
-            <a><img src="{{ image }}" alt="{{ image }}" width="200" height="150"></a>
+            <a href="{{ image }}"><img src="{{ image }}" alt="{{ image }}" width="200" height="150"></a>
         </div>
           {% endfor %}
           </div>
@@ -107,6 +112,12 @@
             <ul class="list-inline mb-2">
               <li class="list-inline-item">
                 <a href="/">Home</a>
+              </li>
+              <li class="list-inline-item">
+               .
+              </li>
+              <li class="list-inline-item">
+                <a href="/faq">FAQ</a>
               </li>
             </ul>
             <p class="text-muted small mb-4 mb-lg-0">&copy; Image Grabber 2019. All Rights Reserved.</p>
