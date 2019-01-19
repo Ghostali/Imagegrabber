@@ -45,7 +45,12 @@ def images():
         flash('No image was found')
         return redirect(url_for('index'))
     print("this is the links", links)
-    return render_template('imagess.html', links=links)
+    return render_template('images.html', links=links)
+
+
+@app.route('/faq')
+def faq():
+    return render_template('faq.html')
 
 
 @app.errorhandler(500)
