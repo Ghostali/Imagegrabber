@@ -8,7 +8,7 @@ links = []
 # scrawls website for images in a <img> tag
 def website(site, option):
     del links[:]
-    driver = webdriver.Firefox()
+    driver = webdriver.PhantomJS()
     driver.maximize_window()
     driver.get(site)
     for _ in range(int(option)):
