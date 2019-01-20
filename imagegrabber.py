@@ -21,4 +21,4 @@ def website(site, option):
         else:
             links.append(image.get_attribute('src'))
     driver.quit()
-    return links
+    return set(links)
