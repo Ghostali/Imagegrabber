@@ -13,7 +13,7 @@ def website(site, option):
     for _ in range(int(option)):
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         print("Scrolling")
-        time.sleep(0.5)
+        time.sleep(1)
     images = driver.find_elements_by_xpath('//img[@src]')
     for image in images:
         links.append(image.get_attribute('src'))
